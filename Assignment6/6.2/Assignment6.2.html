@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency conversion</title>
+    <script>
+        async function getRates(base) {
+ let response= new Promise((resolve, reject)=>fetch(`https://api.exchangerate-api.com/v4/latest/${base}`).then((res) => {
+    resolve(res.json());
+  })
+  )
+  return response
+}
+ async function fet(){
+    let from=document.getElementById("from").value
+    let to=document.getElementById("to").value
+    let fromNumber= document.getElementById("fromNumber").value
+
+    let rates = await getRates(from)
+    ans.textContent= rates.rates[to]*fromNumber
+    
+}
+
+    </script>
+
+
+    <style>
+        body{
+    background-image: url("https://e0.pxfuel.com/wallpapers/954/847/desktop-wallpaper-best-blue-without-watermark-blue-2048x1152.jpg");
+    background-size: cover;
+    color: white;
+}
+
+input{
+    background-color: transparent;
+    color: white;
+    width: 97%;
+}
+
+select{
+    width: 99%;
+}
+
+button{
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgb(183, 211, 183);
+}
+
+table{
+    position: absolute;
+    left: 37%;
+    top: 6%;
+    width: 500px;
+}
+
+h3{
+    position: absolute;
+    left:45%
+}
+    </style>
+</head>
+<body>
+    <h3>Check the Currency Rate</h3>
+    <table border>
+        <tr>
+            <tr>
+                <td colspan="3"><p id="explain">We can create Currency converter using current rate by consuming API is by calling API with the base we need for in current example 'From' it will take the base for example 1 unit of the from currency to the equals to how much in another currency then multiply the number entered with the currency entered in the 'from' and give us the answer in 'To' textbox</p></td>
+            </tr>
+            <td>From: </td>
+            <td><select id="from">
+                <option value="USD">USD</option>
+                <option value="AUD">AUD</option>
+                <option value="BRL">BRL</option>
+                <option value="CAD">CAD</option>
+                <option value="DZD">DZD</option>
+                <option value="INR">INR</option>
+                <option value="JEP">JEP</option>
+                <option value="KID">KID</option>
+                <option value="LAK">LAK</option>
+                <option value="LKR">LKR</option>
+                <option value="LSL">LSL</option>
+                <option value="MGA">MGA</option>
+                <option value="MZN">MZN</option>
+                <option value="NAD">NAD</option>
+                <option value="RSD">RSD</option>
+                <option value="RSD">RSD</option>
+                <option value="STN">STN</option>
+                <option value="ZWL">ZWL</option>
+            </select> </td>
+            <td><input type="number" id="fromNumber"> </td>
+        </tr>
+        <tr>
+            <td>To: </td>
+            <td><select id="to">
+                <option value="USD">USD</option>
+                <option value="AUD">AUD</option>
+                <option value="BRL">BRL</option>
+                <option value="CAD">CAD</option>
+                <option value="DZD">DZD</option>
+                <option value="INR">INR</option>
+                <option value="JEP">JEP</option>
+                <option value="KID">KID</option>
+                <option value="LAK">LAK</option>
+                <option value="LKR">LKR</option>
+                <option value="LSL">LSL</option>
+                <option value="MGA">MGA</option>
+                <option value="MZN">MZN</option>
+                <option value="NAD">NAD</option>
+                <option value="RSD">RSD</option>
+                <option value="RSD">RSD</option>
+                <option value="STN">STN</option>
+                <option value="ZWL">ZWL</option>
+            </select</td>
+            <td><span id="ans"></span> </td>
+        </tr>
+        <tr>
+            <td colspan="3"><button id="cal" onclick="fet()">Check</button></td>
+        </tr>
+
+    </table>
+    
+</body>
+</html>

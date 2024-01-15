@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Armstrong Number Check</title>
+    <script>
+        function check(){
+    let number= document.getElementById("number").value
+    let num=parseInt(number),num2=0,i,j
+    if(number.length==4){
+        for(i=0;i<number.length;++i){
+            let prod=1
+            for(j=0;j<number.length;++j){
+                prod*=num%10
+            }
+            console.log(prod)
+            num2+=prod
+            num=Math.floor(num/10)
+        }
+        if(num2==parseInt(number)) ans.textContent=(number+" is a Armstrong number")
+        else ans.textContent=(number+" is not a Armstrong number")
+    }
+    else{
+        ans.textContent=("Enter only 4 digit number")
+    }
+}
+    </script>
+
+    <style>
+        input{
+    width: 97%;
+    height: 97%;
+}
+
+button{
+    width: 100%;
+    background-color: lightcyan;
+}
+    </style>
+</head>
+<body>
+    <h3>Checking Entered Number is armstrong Number or not</h3>
+    <table border>
+        <tr>
+            <td>Enter any 4 digit number: </td>
+            <td><input type="number" id="number" class="number"> </td>
+        </tr>
+        <tr>
+            <td><button id="check" class="btn" onclick="check()">Check</button> </td>
+            <td><span id="ans" class="ans"></span></td>
+        </tr>
+    </table>
+</body>
+</html>
